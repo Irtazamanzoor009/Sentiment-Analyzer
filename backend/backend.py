@@ -7,15 +7,19 @@ from flask_cors import CORS
 import os
 import nltk
 
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords', download_dir='/opt/render/nltk_data')
+nltk_data_dir = '/opt/render/nltk_data'
+os.makedirs(nltk_data_dir, exist_ok=True)
 
+nltk.data.path.append(nltk_data_dir)
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
-    nltk.download('punkt', download_dir='/opt/render/nltk_data')
+    nltk.download('punkt', download_dir=nltk_data_dir)
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords', download_dir=nltk_data_dir)
 
 app = Flask(__name__)
 CORS(app)
