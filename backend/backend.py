@@ -7,8 +7,8 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-model = joblib.load('sentiment_model.pkl')
-vectorizer = joblib.load('vectorizer.pkl')
+model = joblib.load('/backend/sentiment_model.pkl')
+vectorizer = joblib.load('/backend/vectorizer.pkl')
 
 negation_words = {"not", "no", "never", "none"}
 stop_words = set(stopwords.words('english')) - negation_words
