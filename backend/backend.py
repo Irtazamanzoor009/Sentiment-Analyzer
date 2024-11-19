@@ -5,6 +5,11 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from flask_cors import CORS
 import os
+import nltk
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
 
 app = Flask(__name__)
 CORS(app)
