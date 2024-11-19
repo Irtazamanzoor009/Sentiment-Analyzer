@@ -4,11 +4,17 @@ import re
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
-model = joblib.load('/backend/sentiment_model.pkl')
-vectorizer = joblib.load('/backend/vectorizer.pkl')
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, 'sentiment_model.pkl')
+vectorizer_path = os.path.join(current_dir, 'vectorizer.pkl')
+
+model = joblib.load(model_path)
+vectorizer = joblib.load(vectorizer_path)
 
 negation_words = {"not", "no", "never", "none"}
 stop_words = set(stopwords.words('english')) - negation_words
