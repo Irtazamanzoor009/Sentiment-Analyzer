@@ -6,15 +6,16 @@ from nltk.corpus import stopwords
 from flask_cors import CORS
 import os
 import nltk
+
 try:
     nltk.data.find('corpora/stopwords')
 except LookupError:
-    nltk.download('stopwords')
-    
+    nltk.download('stopwords', download_dir='/opt/render/nltk_data')
+
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
-    nltk.download('punkt')
+    nltk.download('punkt', download_dir='/opt/render/nltk_data')
 
 app = Flask(__name__)
 CORS(app)
@@ -57,6 +58,11 @@ def preprocess_text(text):
     words = word_tokenize(text)
     words = [word for word in words if word not in stop_words]
     return ' '.join(words)
+
+@app.route('/testpurpose', method=['GET'])
+def testingPurpose():
+    return jsonify({'message': 'This is a test-purpose API', 'status': 'success'})
+    
 
 @app.route('/predict', methods=['POST'])
 def predict():
