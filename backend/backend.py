@@ -59,7 +59,7 @@ def preprocess_text(text):
     words = [word for word in words if word not in stop_words]
     return ' '.join(words)
 
-@app.route('/testpurpose', method=['GET'])
+@app.route('/testpurpose', methods=['GET'])
 def testingPurpose():
     return jsonify({'message': 'This is a test-purpose API', 'status': 'success'})
     
