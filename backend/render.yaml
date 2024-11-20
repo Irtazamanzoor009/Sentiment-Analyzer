@@ -1,7 +1,7 @@
 services:
   - type: web
-    name: flask-sentiment-app
+    name: flask-backend
     env: python
-    region: singapore  # Or your preferred region
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    workingDirectory: backend

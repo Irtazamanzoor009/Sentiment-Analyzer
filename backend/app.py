@@ -1,3 +1,5 @@
+print("Starting Flask app")
+
 from flask import Flask, request, jsonify
 import joblib
 import re
