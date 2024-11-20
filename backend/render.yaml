@@ -3,5 +3,5 @@ services:
     name: flask-backend
     env: python
     buildCommand: ""
-    startCommand: gunicorn app:app
+    startCommand: gunicorn index:app
     workingDirectory: backend
