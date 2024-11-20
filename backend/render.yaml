@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: flask-backend
-    env: python
-    buildCommand: ""
-    startCommand: gunicorn index:app
-    workingDirectory: backend
